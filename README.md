@@ -1,4 +1,4 @@
-${1:FreeBasic Height Map Manager}
+# FreeBasic Height Map Manager
 Read .BMP grayscale heightmap files, export them as .HM and import them later to use with the manager or other programs.
 The .HM files are easier to read than .BMP files so you can quickly read data from the .HM file using your own programs.
 
