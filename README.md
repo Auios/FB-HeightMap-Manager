@@ -21,10 +21,10 @@ Imports the .HM file.
 `hm_render(hm as heightMap)`
 Used for debugging. Will create a window the same size as the heightmap and render it.
 
-hm_getHeight(hm as heightMap, x as integer, y as integer) as ubyte
+`hm_getHeight(hm as heightMap, x as integer, y as integer) as ubyte`
 Gets the height value at the coordinates.
 
-hm_setHeight(hm as heightMap, x as integer, y as integer)
+`hm_setHeight(hm as heightMap, x as integer, y as integer)`
 Sets the height value at the coordinates.
 
 ## Example
