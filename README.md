@@ -30,7 +30,6 @@ Sets the height value at the coordinates.
 ## Example
 ```markdown
 #include "heightMap.bi"
-#include "crt.bi"
 
 'Disable console
 'define fbc -s gui
