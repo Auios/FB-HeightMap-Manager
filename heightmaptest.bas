@@ -7,8 +7,11 @@
 dim as heightMap hm
 
 'hm_load(hm,"worldgen.bmp")
+'hm_export(hm,"myHeightMap.hm")
 '
 'hm_normalize(hm)
+
+'hm_destroy(hm)
 
 'print hm.size
 
@@ -20,11 +23,7 @@ dim as heightMap hm
 
 hm_import(hm, "myHeightMap.hm")
 
-for y as integer = 0 to hm.h-1
-    for x as integer = 0 to hm.w-1
-        printf("Data: " & hm_getHeight(hm,x,y) & !"\n")
-    next x
-next y
+hm_render(hm)
 
 hm_destroy(hm)
 

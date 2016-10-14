@@ -9,7 +9,7 @@ type heightMap
     as fb.image ptr image
     as boolean isUsed
     
-    as single ptr height
+    as ubyte ptr height
 end type
 
 declare function hm_getSize(hm as heightMap) as ulong
@@ -40,6 +40,22 @@ sub hm_destroy(hm as heightMap)
     end if
 end sub
 
+sub hm_render(hm as heightMap)
+    if(hm.isUsed) then
+        with hm
+            if(NOT screenPtr()) then
+                screenres(.w,.h,16)
+                for y as integer = 0 to .h-1
+                    for x as integer = 0 to .w-1
+                        dim as integer i = (y*.w)+x
+                        pset(x,y),rgb(.height[i],.height[i],.height[i])
+                    next x
+                next y
+            end if
+        end with
+    end if
+end sub
+
 function hm_load(hm as heightMap, fileName as string) as boolean
     dim as boolean ret = false
     dim as integer ff
@@ -53,8 +69,6 @@ function hm_load(hm as heightMap, fileName as string) as boolean
                     get #ff, 23, hm.h
                     close #ff
                     
-                    
-                    
                     if(NOT screenPtr()) then
                         screenres(hm.w,hm.h,16)
                     end if
@@ -66,7 +80,7 @@ function hm_load(hm as heightMap, fileName as string) as boolean
                     hm.isUsed = true
                     hm.size = hm.w * hm.h
                     
-                    hm.height = new single[hm.size]
+                    hm.height = new ubyte[hm.size]
                     
                     for y as integer = 0 to hm.h-1
                         for x as integer = 0 to hm.w-1
@@ -142,7 +156,7 @@ sub hm_import(hm as heightMap, fileName as string)
                         get #ff,,.w
                         get #ff,,.h
                         
-                        .height = new single[.size]
+                        .height = new ubyte[.size]
                         
                         for i as integer = 0 to .size-1
                             get #ff,,.height[i]
